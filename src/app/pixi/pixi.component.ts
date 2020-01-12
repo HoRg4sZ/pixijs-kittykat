@@ -29,11 +29,15 @@ export class PixiComponent implements OnInit {
       resolution: 1
     }); // this creates our pixi application
     this.pixiContainer.nativeElement.appendChild(this.app.view); // this places our pixi application onto the viewable document
-
     loader
       .add('assets/images/cat.png')
       .load(() => {
-        this.app.stage.addChild(new Sprite(resources['assets/images/cat.png'].texture));
+        const cat = new Sprite(resources['assets/images/cat.png'].texture);
+        cat.position.set(100, 100);
+        cat.scale.set(0.9, 0.9);
+        cat.anchor.set(0.5, 0.5);
+        cat.rotation = 0.5;
+        this.app.stage.addChild(cat);
       });
   }
 
